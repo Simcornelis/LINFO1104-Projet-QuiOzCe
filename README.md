@@ -1,2 +1,3 @@
-# Projet_qui-OZ-ce
-Jeu « qui est-ce » pour le projet du cours LINFO1104 en OZ.
+# LINFO1104 - Projet « qui Oz-ce »
+
+Projet en _Paradigmes de programmation et concurrence_ (LINFO1104) recréant le jeu « _Qui est-ce ?_ » en **OZ** avec interface graphique.
