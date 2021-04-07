@@ -35,14 +35,18 @@ in
       end
 
       % returns the question with the best score
-      fun {GetBestScoredQ Scores}
-        fun {IsBetterThan Q Acc B} if Acc.2 >= B then Acc else Q#B end end
+      fun {GetBestScoredQ Scores Persons}
+        Ideal = {Ceil {IntToFloat Persons} / 2.0}
+        fun {Dist A} {Abs Ideal - {IntToFloat A}} end
+        fun {IsBetterThan Q Acc B}
+          if {Dist Acc.2} > {Dist B} then Q#B else Acc end
+        end
       in
         {Record.foldLInd Scores IsBetterThan nil#~1}.1 % Acc = Question#Score
       end
     in
       if {Length Data} =< 1 orelse {Width Data.1} =< 1 then nil
-      else {GetBestScoredQ {FoldL Data ScoreQuestions Start}}
+      else {GetBestScoredQ {FoldL Data ScoreQuestions Start} {Length Data}}
       end
     end
 
@@ -83,6 +87,7 @@ in
         end
       end
     in
+      % {Browse Tree}
       Result = {Next Tree}
 
       if Result == false then

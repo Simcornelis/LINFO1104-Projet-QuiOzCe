@@ -1,0 +1,502 @@
+[
+character('Russell Lambert'
+'A-t-il une soeur?':false
+'Est-ce un personnage fictif?':false
+'A-t-il des cheveux?':false
+'Est-ce un humain':false
+'A-t-il des cheveux noirs?':true
+'Porte-t-il des lunettes?':false
+'A-t-il des cheveux blond?':true
+'Est-ce une fille?':true
+)
+character('Katharine Singleton'
+'A-t-il une soeur?':false
+'Est-ce un personnage fictif?':false
+'A-t-il des cheveux?':true
+'Est-ce un humain':true
+'A-t-il des cheveux noirs?':true
+'Porte-t-il des lunettes?':true
+'A-t-il des cheveux blond?':true
+'Est-ce une fille?':false
+)
+character('Braydon Bond'
+'A-t-il une soeur?':true
+'Est-ce un personnage fictif?':false
+'A-t-il des cheveux?':true
+'Est-ce un humain':false
+'A-t-il des cheveux noirs?':true
+'Porte-t-il des lunettes?':false
+'A-t-il des cheveux blond?':false
+'Est-ce une fille?':false
+)
+character('Joely Dejesus'
+'A-t-il une soeur?':false
+'Est-ce un personnage fictif?':true
+'A-t-il des cheveux?':false
+'Est-ce un humain':false
+'A-t-il des cheveux noirs?':false
+'Porte-t-il des lunettes?':true
+'A-t-il des cheveux blond?':true
+'Est-ce une fille?':false
+)
+character('Shaun Tyler'
+'A-t-il une soeur?':false
+'Est-ce un personnage fictif?':true
+'A-t-il des cheveux?':false
+'Est-ce un humain':false
+'A-t-il des cheveux noirs?':false
+'Porte-t-il des lunettes?':true
+'A-t-il des cheveux blond?':false
+'Est-ce une fille?':false
+)
+character('Darnell Whittaker'
+'A-t-il une soeur?':false
+'Est-ce un personnage fictif?':true
+'A-t-il des cheveux?':true
+'Est-ce un humain':false
+'A-t-il des cheveux noirs?':true
+'Porte-t-il des lunettes?':true
+'A-t-il des cheveux blond?':false
+'Est-ce une fille?':true
+)
+character('Osian Gough'
+'A-t-il une soeur?':false
+'Est-ce un personnage fictif?':true
+'A-t-il des cheveux?':false
+'Est-ce un humain':false
+'A-t-il des cheveux noirs?':false
+'Porte-t-il des lunettes?':true
+'A-t-il des cheveux blond?':true
+'Est-ce une fille?':true
+)
+character('Elle Salter'
+'A-t-il une soeur?':true
+'Est-ce un personnage fictif?':false
+'A-t-il des cheveux?':true
+'Est-ce un humain':true
+'A-t-il des cheveux noirs?':false
+'Porte-t-il des lunettes?':false
+'A-t-il des cheveux blond?':true
+'Est-ce une fille?':true
+)
+character('Tymon Rossi'
+'A-t-il une soeur?':true
+'Est-ce un personnage fictif?':false
+'A-t-il des cheveux?':true
+'Est-ce un humain':false
+'A-t-il des cheveux noirs?':false
+'Porte-t-il des lunettes?':false
+'A-t-il des cheveux blond?':true
+'Est-ce une fille?':false
+)
+character('Junior Johns'
+'A-t-il une soeur?':false
+'Est-ce un personnage fictif?':false
+'A-t-il des cheveux?':true
+'Est-ce un humain':false
+'A-t-il des cheveux noirs?':true
+'Porte-t-il des lunettes?':true
+'A-t-il des cheveux blond?':false
+'Est-ce une fille?':true
+)
+character('Phoenix Bonilla'
+'A-t-il une soeur?':false
+'Est-ce un personnage fictif?':true
+'A-t-il des cheveux?':false
+'Est-ce un humain':false
+'A-t-il des cheveux noirs?':true
+'Porte-t-il des lunettes?':false
+'A-t-il des cheveux blond?':false
+'Est-ce une fille?':true
+)
+character('Arif Singh'
+'A-t-il une soeur?':false
+'Est-ce un personnage fictif?':true
+'A-t-il des cheveux?':true
+'Est-ce un humain':true
+'A-t-il des cheveux noirs?':true
+'Porte-t-il des lunettes?':true
+'A-t-il des cheveux blond?':true
+'Est-ce une fille?':false
+)
+character('Jiya Beattie'
+'A-t-il une soeur?':true
+'Est-ce un personnage fictif?':true
+'A-t-il des cheveux?':true
+'Est-ce un humain':false
+'A-t-il des cheveux noirs?':false
+'Porte-t-il des lunettes?':true
+'A-t-il des cheveux blond?':true
+'Est-ce une fille?':true
+)
+character('Ella-May Mcneil'
+'A-t-il une soeur?':false
+'Est-ce un personnage fictif?':true
+'A-t-il des cheveux?':true
+'Est-ce un humain':true
+'A-t-il des cheveux noirs?':false
+'Porte-t-il des lunettes?':false
+'A-t-il des cheveux blond?':true
+'Est-ce une fille?':false
+)
+character('Kaleb Martins'
+'A-t-il une soeur?':false
+'Est-ce un personnage fictif?':false
+'A-t-il des cheveux?':true
+'Est-ce un humain':false
+'A-t-il des cheveux noirs?':false
+'Porte-t-il des lunettes?':false
+'A-t-il des cheveux blond?':true
+'Est-ce une fille?':false
+)
+character('Cadi Rosales'
+'A-t-il une soeur?':true
+'Est-ce un personnage fictif?':true
+'A-t-il des cheveux?':true
+'Est-ce un humain':true
+'A-t-il des cheveux noirs?':false
+'Porte-t-il des lunettes?':false
+'A-t-il des cheveux blond?':true
+'Est-ce une fille?':false
+)
+character('Humera Pope'
+'A-t-il une soeur?':true
+'Est-ce un personnage fictif?':false
+'A-t-il des cheveux?':true
+'Est-ce un humain':false
+'A-t-il des cheveux noirs?':true
+'Porte-t-il des lunettes?':true
+'A-t-il des cheveux blond?':true
+'Est-ce une fille?':true
+)
+character('Havin Craig'
+'A-t-il une soeur?':true
+'Est-ce un personnage fictif?':false
+'A-t-il des cheveux?':false
+'Est-ce un humain':false
+'A-t-il des cheveux noirs?':true
+'Porte-t-il des lunettes?':true
+'A-t-il des cheveux blond?':false
+'Est-ce une fille?':false
+)
+character('Graham Bennett'
+'A-t-il une soeur?':false
+'Est-ce un personnage fictif?':true
+'A-t-il des cheveux?':false
+'Est-ce un humain':true
+'A-t-il des cheveux noirs?':false
+'Porte-t-il des lunettes?':false
+'A-t-il des cheveux blond?':false
+'Est-ce une fille?':true
+)
+character('Lucien Poole'
+'A-t-il une soeur?':false
+'Est-ce un personnage fictif?':true
+'A-t-il des cheveux?':false
+'Est-ce un humain':false
+'A-t-il des cheveux noirs?':true
+'Porte-t-il des lunettes?':false
+'A-t-il des cheveux blond?':false
+'Est-ce une fille?':true
+)
+character('Neriah Cooley'
+'A-t-il une soeur?':false
+'Est-ce un personnage fictif?':false
+'A-t-il des cheveux?':false
+'Est-ce un humain':true
+'A-t-il des cheveux noirs?':false
+'Porte-t-il des lunettes?':true
+'A-t-il des cheveux blond?':true
+'Est-ce une fille?':false
+)
+character('Gloria Stewart'
+'A-t-il une soeur?':true
+'Est-ce un personnage fictif?':true
+'A-t-il des cheveux?':false
+'Est-ce un humain':true
+'A-t-il des cheveux noirs?':false
+'Porte-t-il des lunettes?':false
+'A-t-il des cheveux blond?':false
+'Est-ce une fille?':true
+)
+character('Aryan Foster'
+'A-t-il une soeur?':false
+'Est-ce un personnage fictif?':true
+'A-t-il des cheveux?':true
+'Est-ce un humain':false
+'A-t-il des cheveux noirs?':false
+'Porte-t-il des lunettes?':false
+'A-t-il des cheveux blond?':true
+'Est-ce une fille?':false
+)
+character('Said Snider'
+'A-t-il une soeur?':false
+'Est-ce un personnage fictif?':false
+'A-t-il des cheveux?':false
+'Est-ce un humain':false
+'A-t-il des cheveux noirs?':false
+'Porte-t-il des lunettes?':false
+'A-t-il des cheveux blond?':false
+'Est-ce une fille?':false
+)
+character('Marissa Pitt'
+'A-t-il une soeur?':false
+'Est-ce un personnage fictif?':true
+'A-t-il des cheveux?':true
+'Est-ce un humain':true
+'A-t-il des cheveux noirs?':false
+'Porte-t-il des lunettes?':true
+'A-t-il des cheveux blond?':true
+'Est-ce une fille?':false
+)
+character('Ifrah Dickinson'
+'A-t-il une soeur?':false
+'Est-ce un personnage fictif?':true
+'A-t-il des cheveux?':false
+'Est-ce un humain':true
+'A-t-il des cheveux noirs?':true
+'Porte-t-il des lunettes?':true
+'A-t-il des cheveux blond?':false
+'Est-ce une fille?':false
+)
+character('Luis Black'
+'A-t-il une soeur?':true
+'Est-ce un personnage fictif?':false
+'A-t-il des cheveux?':false
+'Est-ce un humain':true
+'A-t-il des cheveux noirs?':false
+'Porte-t-il des lunettes?':true
+'A-t-il des cheveux blond?':false
+'Est-ce une fille?':true
+)
+character('Zahra Bassett'
+'A-t-il une soeur?':false
+'Est-ce un personnage fictif?':true
+'A-t-il des cheveux?':false
+'Est-ce un humain':false
+'A-t-il des cheveux noirs?':false
+'Porte-t-il des lunettes?':true
+'A-t-il des cheveux blond?':true
+'Est-ce une fille?':true
+)
+character('Zoya Smart'
+'A-t-il une soeur?':false
+'Est-ce un personnage fictif?':true
+'A-t-il des cheveux?':false
+'Est-ce un humain':true
+'A-t-il des cheveux noirs?':true
+'Porte-t-il des lunettes?':true
+'A-t-il des cheveux blond?':false
+'Est-ce une fille?':false
+)
+character('Courtney Tapia'
+'A-t-il une soeur?':true
+'Est-ce un personnage fictif?':true
+'A-t-il des cheveux?':true
+'Est-ce un humain':true
+'A-t-il des cheveux noirs?':true
+'Porte-t-il des lunettes?':true
+'A-t-il des cheveux blond?':false
+'Est-ce une fille?':true
+)
+character('Callum Zhang'
+'A-t-il une soeur?':true
+'Est-ce un personnage fictif?':true
+'A-t-il des cheveux?':true
+'Est-ce un humain':false
+'A-t-il des cheveux noirs?':true
+'Porte-t-il des lunettes?':false
+'A-t-il des cheveux blond?':true
+'Est-ce une fille?':true
+)
+character('Georgie Rudd'
+'A-t-il une soeur?':false
+'Est-ce un personnage fictif?':false
+'A-t-il des cheveux?':false
+'Est-ce un humain':false
+'A-t-il des cheveux noirs?':false
+'Porte-t-il des lunettes?':true
+'A-t-il des cheveux blond?':false
+'Est-ce une fille?':true
+)
+character('Jim Flynn'
+'A-t-il une soeur?':false
+'Est-ce un personnage fictif?':true
+'A-t-il des cheveux?':true
+'Est-ce un humain':false
+'A-t-il des cheveux noirs?':false
+'Porte-t-il des lunettes?':false
+'A-t-il des cheveux blond?':false
+'Est-ce une fille?':false
+)
+character('Addison Ortega'
+'A-t-il une soeur?':false
+'Est-ce un personnage fictif?':false
+'A-t-il des cheveux?':false
+'Est-ce un humain':true
+'A-t-il des cheveux noirs?':true
+'Porte-t-il des lunettes?':true
+'A-t-il des cheveux blond?':true
+'Est-ce une fille?':true
+)
+character('Zayn Bryan'
+'A-t-il une soeur?':true
+'Est-ce un personnage fictif?':false
+'A-t-il des cheveux?':false
+'Est-ce un humain':true
+'A-t-il des cheveux noirs?':false
+'Porte-t-il des lunettes?':true
+'A-t-il des cheveux blond?':false
+'Est-ce une fille?':false
+)
+character('Jago Gates'
+'A-t-il une soeur?':true
+'Est-ce un personnage fictif?':true
+'A-t-il des cheveux?':true
+'Est-ce un humain':true
+'A-t-il des cheveux noirs?':false
+'Porte-t-il des lunettes?':false
+'A-t-il des cheveux blond?':false
+'Est-ce une fille?':false
+)
+character('Kole Romero'
+'A-t-il une soeur?':true
+'Est-ce un personnage fictif?':true
+'A-t-il des cheveux?':true
+'Est-ce un humain':true
+'A-t-il des cheveux noirs?':false
+'Porte-t-il des lunettes?':true
+'A-t-il des cheveux blond?':false
+'Est-ce une fille?':false
+)
+character('Tarik Albert'
+'A-t-il une soeur?':true
+'Est-ce un personnage fictif?':true
+'A-t-il des cheveux?':true
+'Est-ce un humain':true
+'A-t-il des cheveux noirs?':true
+'Porte-t-il des lunettes?':false
+'A-t-il des cheveux blond?':false
+'Est-ce une fille?':true
+)
+character('Lucian Broughton'
+'A-t-il une soeur?':true
+'Est-ce un personnage fictif?':false
+'A-t-il des cheveux?':false
+'Est-ce un humain':true
+'A-t-il des cheveux noirs?':true
+'Porte-t-il des lunettes?':true
+'A-t-il des cheveux blond?':true
+'Est-ce une fille?':false
+)
+character('Brenna Small'
+'A-t-il une soeur?':false
+'Est-ce un personnage fictif?':false
+'A-t-il des cheveux?':false
+'Est-ce un humain':true
+'A-t-il des cheveux noirs?':false
+'Porte-t-il des lunettes?':true
+'A-t-il des cheveux blond?':false
+'Est-ce une fille?':false
+)
+character('Jibril Hull'
+'A-t-il une soeur?':true
+'Est-ce un personnage fictif?':false
+'A-t-il des cheveux?':true
+'Est-ce un humain':false
+'A-t-il des cheveux noirs?':true
+'Porte-t-il des lunettes?':true
+'A-t-il des cheveux blond?':true
+'Est-ce une fille?':false
+)
+character('Paul Love'
+'A-t-il une soeur?':false
+'Est-ce un personnage fictif?':true
+'A-t-il des cheveux?':false
+'Est-ce un humain':true
+'A-t-il des cheveux noirs?':true
+'Porte-t-il des lunettes?':false
+'A-t-il des cheveux blond?':false
+'Est-ce une fille?':false
+)
+character('Ellie-Louise Partridge'
+'A-t-il une soeur?':true
+'Est-ce un personnage fictif?':false
+'A-t-il des cheveux?':true
+'Est-ce un humain':false
+'A-t-il des cheveux noirs?':true
+'Porte-t-il des lunettes?':false
+'A-t-il des cheveux blond?':false
+'Est-ce une fille?':false
+)
+character('Mercy Hood'
+'A-t-il une soeur?':true
+'Est-ce un personnage fictif?':false
+'A-t-il des cheveux?':false
+'Est-ce un humain':true
+'A-t-il des cheveux noirs?':true
+'Porte-t-il des lunettes?':true
+'A-t-il des cheveux blond?':false
+'Est-ce une fille?':true
+)
+character('Cecelia Dennis'
+'A-t-il une soeur?':true
+'Est-ce un personnage fictif?':true
+'A-t-il des cheveux?':false
+'Est-ce un humain':true
+'A-t-il des cheveux noirs?':false
+'Porte-t-il des lunettes?':true
+'A-t-il des cheveux blond?':false
+'Est-ce une fille?':false
+)
+character('Nadia Chapma'
+'A-t-il une soeur?':true
+'Est-ce un personnage fictif?':true
+'A-t-il des cheveux?':true
+'Est-ce un humain':true
+'A-t-il des cheveux noirs?':true
+'Porte-t-il des lunettes?':true
+'A-t-il des cheveux blond?':false
+'Est-ce une fille?':true
+)
+character('Devonte Reid'
+'A-t-il une soeur?':true
+'Est-ce un personnage fictif?':true
+'A-t-il des cheveux?':false
+'Est-ce un humain':false
+'A-t-il des cheveux noirs?':true
+'Porte-t-il des lunettes?':true
+'A-t-il des cheveux blond?':true
+'Est-ce une fille?':false
+)
+character('Annabel Slater'
+'A-t-il une soeur?':false
+'Est-ce un personnage fictif?':false
+'A-t-il des cheveux?':false
+'Est-ce un humain':true
+'A-t-il des cheveux noirs?':false
+'Porte-t-il des lunettes?':false
+'A-t-il des cheveux blond?':true
+'Est-ce une fille?':false
+)
+character('Aarush Samuels'
+'A-t-il une soeur?':false
+'Est-ce un personnage fictif?':true
+'A-t-il des cheveux?':true
+'Est-ce un humain':true
+'A-t-il des cheveux noirs?':false
+'Porte-t-il des lunettes?':false
+'A-t-il des cheveux blond?':false
+'Est-ce une fille?':true
+)
+character('Haya Mcloughlin'
+'A-t-il une soeur?':true
+'Est-ce un personnage fictif?':true
+'A-t-il des cheveux?':true
+'Est-ce un humain':false
+'A-t-il des cheveux noirs?':false
+'Porte-t-il des lunettes?':true
+'A-t-il des cheveux blond?':true
+'Est-ce une fille?':true
+)
+]
