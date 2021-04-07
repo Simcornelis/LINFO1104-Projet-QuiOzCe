@@ -22,15 +22,32 @@ in
     ListOfAnswersFile = CWD#"test_answers.txt"
     ListOfAnswers = {ProjectLib.loadCharacter file CWD#"test_answers.txt"}
 
-    % get next best question to ask to split possible anwers
+    % get next best question to ask to split possible anwers equally
     fun {NextQuestion Data}
-      if {Width Data.1} == 1 orelse {Length Data} == 1 then nil
-      else {Nth {Arity Data.1} 2} % TODO return best question
+      % returns score(q1:0 q2:0 ... qn:0) (each question starts with a 0 score)
+      Start = {List.toRecord score {List.map {Arity Data.1}.2 fun {$ E} E#0 end}}
+
+      % returns a record with the score set for each question like score(q1:2 q2:5 q3:1)
+      fun {ScoreQuestions Acc Elem}
+        fun {BoolToInt B} if B then 1 else 0 end end
+      in
+        {Record.mapInd Acc fun {$ Q E} E + {BoolToInt Elem.Q} end}
+      end
+
+      % returns the question with the best score
+      fun {GetBestScoredQ Scores}
+        fun {IsBetterThan Q Acc B} if Acc.2 >= B then Acc else Q#B end end
+      in
+        {Record.foldLInd Scores IsBetterThan nil#~1}.1 % Acc = Question#Score
+      end
+    in
+      if {Length Data} =< 1 orelse {Width Data.1} =< 1 then nil
+      else {GetBestScoredQ {FoldL Data ScoreQuestions Start}}
       end
     end
 
     fun {TreeBuilder Data}
-      % get tuple with a list of true and a list of false (with the question removed)
+      % splits a list in true and false for the question (with the question removed)
       fun {Split Data Question}
         T F Ask RemoveQ
       in
@@ -62,7 +79,7 @@ in
           [] question(Q true:T false:F) then
             if {ProjectLib.askQuestion Q} then {Next T}
             else {Next F} end
-          [] L then {ProjectLib.found L} % TODO if multiple, ask for every match
+          [] List then {ProjectLib.found List}
         end
       end
     in
@@ -73,13 +90,13 @@ in
         {Print 'Je me suis trompé\n'}
         {Print {ProjectLib.surrender}}
 
-        % warning, Browse do not work in noGUI mode
+        % warning, Browse does not work in noGUI mode
         {Browse {ProjectLib.askQuestion 'A-t-il des cheveux roux ?'}}
       else
         {Print Result}
       end
       
-      unit % toujours renvoyer unit
+      unit % always return unit
     end
   in
     {ProjectLib.play opts(characters:ListOfCharacters driver:GameDriver 
