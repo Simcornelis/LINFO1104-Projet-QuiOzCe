@@ -44,9 +44,14 @@ in
       in
         {Record.foldLInd Scores IsBetterThan nil#~1}.1 % Acc = Question#Score
       end
+
+      Scores = {FoldL Data ScoreQuestions Start}
+
+      % true if all players left have the same answers (then you shouldn't ask the questions)
+      AllEqual = {Record.all Scores fun {$ E} E == {Length Data} orelse E == 0 end}
     in
-      if {Length Data} =< 1 orelse {Width Data.1} =< 1 then nil
-      else {GetBestScoredQ {FoldL Data ScoreQuestions Start} {Length Data}}
+      if {Length Data} =< 1 orelse {Width Data.1} =< 1 orelse AllEqual then nil
+      else {GetBestScoredQ Scores {Length Data}}
       end
     end
 
@@ -87,7 +92,7 @@ in
         end
       end
     in
-      % {Browse Tree}
+      {Browse Tree}
       Result = {Next Tree}
 
       if Result == false then
