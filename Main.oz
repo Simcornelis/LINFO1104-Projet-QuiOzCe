@@ -22,6 +22,10 @@ in
     ListOfAnswersFile = CWD#"test_answers.txt"
     ListOfAnswers = {ProjectLib.loadCharacter file CWD#"test_answers.txt"}
 
+
+
+
+
     % get next best question to ask to split possible anwers equally
     fun {NextQuestion Data}
       % returns score(q1:0 q2:0 ... qn:0) (each question starts with a 0 score)
@@ -80,20 +84,25 @@ in
       end
     end
 
-    fun {GameDriver Tree}
-      Result
-      fun {Next Tree}
+    fun {GameDriver Tree}  
+      Result Last 
+      fun {Next Tree Last}
         case Tree
           of nil then {ProjectLib.surrender}
           [] question(Q true:T false:F) then
-            if {ProjectLib.askQuestion Q} then {Next T}
-            else {Next F} end
+            local Test in 
+              Test = {ProjectLib.askQuestion Q}
+              if Test == oops then {Next Last Last}
+              elseif Test == true then {Next T Tree}
+              else {Next F Tree} 
+              end
+            end
           [] List then {ProjectLib.found List}
         end
       end
     in
       {Browse Tree}
-      Result = {Next Tree}
+      Result = {Next Tree Last}
 
       if Result == false then
         % Arf ! L'algorithme s'est trompé !
@@ -111,7 +120,8 @@ in
   in
     {ProjectLib.play opts(characters:ListOfCharacters driver:GameDriver 
                           noGUI:NoGUI builder:TreeBuilder 
-                          autoPlay:ListOfAnswers newCharacter:NewCharacter)}
+                          autoPlay:ListOfAnswers newCharacter:NewCharacter
+                          oopsButton:true)}
     {Application.exit 0}
   end
 end
