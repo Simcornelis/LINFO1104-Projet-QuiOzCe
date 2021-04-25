@@ -23,7 +23,6 @@ in
     ListOfAnswersFile = Args.'ans'
     ListOfCharacters = {ProjectLib.loadDatabase file DB}
     ListOfAnswers = {ProjectLib.loadCharacter file ListOfAnswersFile}
-    NewCharacter = {ProjectLib.loadCharacter file CWD#"new_character.txt"}
 
     % get next best question to ask to split possible anwers equally
     fun {NextQuestion Data}
@@ -83,42 +82,40 @@ in
       end
     end
 
-    fun {GameDriver Tree}  
-      Result Last 
+    fun {GameDriver Tree}
       fun {Next Tree Last}
         case Tree
           of nil then {ProjectLib.surrender}
           [] question(Q true:T false:F) then
-            local Test in 
-              Test = {ProjectLib.askQuestion Q}
-              if Test == oops then {Next Last Last}
-              elseif Test == true then {Next T Tree}
-              else {Next F Tree} 
-              end
+            case {ProjectLib.askQuestion Q}
+              of oops then {Next Last Last}
+              [] true then {Next T Tree}
+              [] false then {Next F Tree}
             end
           [] List then {ProjectLib.found List}
         end
       end
+      Result = {Next Tree Tree}
     in
       % {Browse Tree}
-      Result = {Next Tree Last}
 
       if Result == false then
-        {Print 'Je me suis trompé\n'}
+        {Print 'Mistakes were made...\n'}
         {Print {ProjectLib.surrender}}
       elseif {IsList Result} then
-        {FPrint {List.foldL Result.2 fun {$ A B} A#","#B end Result.1}#'\n'}
+        {FPrint {List.foldL Result.2 fun {$ A B} A#","#B end Result.1}}
       else
-        {FPrint Result#'\n'}
+        {FPrint Result}
       end
       
+      if NoGUI == false then {FPrint '\n'} end
+
       unit % always return unit
     end
   in
     {ProjectLib.play opts(characters:ListOfCharacters driver:GameDriver 
                           noGUI:NoGUI builder:TreeBuilder 
-                          autoPlay:ListOfAnswers newCharacter:NewCharacter
-                          oopsButton:true)}
+                          autoPlay:ListOfAnswers oopsButton:true)}
     {File close}
     {Application.exit 0}
   end
