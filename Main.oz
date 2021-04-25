@@ -3,28 +3,27 @@ import
   ProjectLib
   Browser
   OS
+  Open
   System
   Application
 define
   CWD = {Atom.toString {OS.getCWD}}#"/"
   Browse = proc {$ Buf} {Browser.browse Buf} end
-  Print = proc{$ S} {System.print S} end
-  Args = {Application.getArgs record('nogui'(single type:bool default:false optional:true)
-          'db'(single type:string default:CWD#"database.txt"))} 
+  Print = proc {$ S} {System.print S} end
+  File = {New Open.file init(name:'stdout' flags: [write create truncate text])}
+  FPrint = proc {$ S} {File write(vs:S)} end
+  Args = {Application.getArgs record(
+          'nogui'(single type:bool default:false optional:true)
+          'db'(single type:string default:CWD#"database.txt")
+          'ans'(single type:string default:CWD#"test_answers.txt" optional:true))} 
 in 
   local
-    NoGUI = Args.'nogui'
     DB = Args.'db'
-    ListOfCharacters = {ProjectLib.loadDatabase file Args.'db'}
+    NoGUI = Args.'nogui'
+    ListOfAnswersFile = Args.'ans'
+    ListOfCharacters = {ProjectLib.loadDatabase file DB}
+    ListOfAnswers = {ProjectLib.loadCharacter file ListOfAnswersFile}
     NewCharacter = {ProjectLib.loadCharacter file CWD#"new_character.txt"}
-    % Vous devez modifier le code pour que cette variable soit
-    % assigné un argument 	
-    ListOfAnswersFile = CWD#"test_answers.txt"
-    ListOfAnswers = {ProjectLib.loadCharacter file CWD#"test_answers.txt"}
-
-
-
-
 
     % get next best question to ask to split possible anwers equally
     fun {NextQuestion Data}
@@ -101,18 +100,16 @@ in
         end
       end
     in
-      {Browse Tree}
+      % {Browse Tree}
       Result = {Next Tree Last}
 
       if Result == false then
-        % Arf ! L'algorithme s'est trompé !
         {Print 'Je me suis trompé\n'}
         {Print {ProjectLib.surrender}}
-
-        % warning, Browse does not work in noGUI mode
-        {Browse {ProjectLib.askQuestion 'A-t-il des cheveux roux ?'}}
+      elseif {IsList Result} then
+        {FPrint {List.foldL Result.2 fun {$ A B} A#","#B end Result.1}#'\n'}
       else
-        {Print Result}
+        {FPrint Result#'\n'}
       end
       
       unit % always return unit
@@ -122,6 +119,7 @@ in
                           noGUI:NoGUI builder:TreeBuilder 
                           autoPlay:ListOfAnswers newCharacter:NewCharacter
                           oopsButton:true)}
+    {File close}
     {Application.exit 0}
   end
 end
