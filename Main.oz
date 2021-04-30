@@ -67,7 +67,8 @@ in
         RemoveQ = fun {$ E} {Record.subtract E Question} end % remove question from db records
         question(Question
                 true:{TreeBuilder {Map T RemoveQ}}
-                false:{TreeBuilder {Map F RemoveQ}})
+                false:{TreeBuilder {Map F RemoveQ}}
+                unknown:{TreeBuilder {Map Data RemoveQ}})
       end
     in
       if Data == nil then nil
@@ -86,11 +87,12 @@ in
       fun {Next Tree Last}
         case Tree
           of nil then {ProjectLib.surrender}
-          [] question(Q true:T false:F) then
+          [] question(Q true:T false:F unknown:U) then
             case {ProjectLib.askQuestion Q}
               of oops then {Next Last Last}
               [] true then {Next T Tree}
               [] false then {Next F Tree}
+              [] unknown then {Next U Tree}
             end
           [] List then {ProjectLib.found List}
         end
@@ -114,8 +116,8 @@ in
     end
   in
     {ProjectLib.play opts(characters:ListOfCharacters driver:GameDriver 
-                          noGUI:NoGUI builder:TreeBuilder 
-                          autoPlay:ListOfAnswers oopsButton:true)}
+                          noGUI:NoGUI builder:TreeBuilder autoPlay:ListOfAnswers
+                          oopsButton:true allowUnknown:true)}
     {File close}
     {Application.exit 0}
   end
