@@ -1,8 +1,8 @@
 OZC = ozc
 OZENGINE = ozengine
 
-DBPATH= databaseTest.txt
-NOGUI= "" # set this variable to --nogui if you don't want the GUI
+DBPATH = databaseTest.txt
+NOGUI = "" # set this variable to --nogui if you don't want the GUI
 
 SRC=$(wildcard *.oz)
 OBJ=$(SRC:.oz=.ozf)
@@ -19,8 +19,17 @@ run: all
 	@echo OZC $@
 	@$(OZC) $(OZFLAGS) -c $< -o $@
 
-.PHONY: clean
+ingi: Main.oz Rapport.pdf
+	@zip Projet Main.oz Rapport.pdf
+
+%.pdf:
+	@echo "Pas encore fait..." > $@
+
+.PHONY: clean sclean
 
 clean:
 	@echo rm $(OBJ)
 	@rm -rf $(OBJ)
+
+sclean: clean
+	@rm *.zip
