@@ -1,11 +1,6 @@
 functor
 import
-  ProjectLib
-  Browser
-  OS
-  Open
-  System
-  Application
+  Application Browser Open OS ProjectLib System
 define
   CWD = {Atom.toString {OS.getCWD}}#"/"
   Browse = proc {$ Buf} {Browser.browse Buf} end
@@ -15,14 +10,12 @@ define
   Args = {Application.getArgs record(
           'nogui'(single type:bool default:false optional:true)
           'db'(single type:string default:CWD#"database.txt")
-          'ans'(single type:string default:CWD#"test_answers.txt" optional:true))} 
-in 
+          'ans'(single type:string default:CWD#"test_answers.txt" optional:true))}
+in
   local
-    DB = Args.'db'
     NoGUI = Args.'nogui'
-    ListOfAnswersFile = Args.'ans'
-    ListOfCharacters = {ProjectLib.loadDatabase file DB}
-    ListOfAnswers = {ProjectLib.loadCharacter file ListOfAnswersFile}
+    ListOfCharacters = {ProjectLib.loadDatabase file Args.'db'}
+    ListOfAnswers = {ProjectLib.loadCharacter file Args.'ans'}
 
     % get next best question to ask to split possible anwers equally
     fun {NextQuestion Data}
@@ -31,20 +24,18 @@ in
 
       % returns a record with the score set for each question like score(q1:2 q2:5 q3:1)
       fun {ScoreQuestions Acc Elem}
-        fun {BoolToInt B} if B then 1 else 0 end end
-      in
-        {Record.mapInd Acc fun {$ Q E} E + {BoolToInt Elem.Q} end}
+        {Record.mapInd Acc fun {$ Q E} if Elem.Q then E+1 else E end end}
       end
 
       % returns the question with the best score
       fun {GetBestScoredQ Scores Persons}
-        Ideal = {Ceil {IntToFloat Persons} / 2.0}
-        fun {Dist A} {Abs Ideal - {IntToFloat A}} end
+        Ideal = Persons div 2
+        fun {Dist A} {Abs Ideal - A} end
         fun {IsBetterThan Q Acc B}
           if {Dist Acc.2} > {Dist B} then Q#B else Acc end
         end
       in
-        {Record.foldLInd Scores IsBetterThan nil#~1}.1 % Acc = Question#Score
+        {Record.foldLInd Scores IsBetterThan nil#Persons+1}.1 % Acc = Question#Score
       end
 
       Scores = {FoldL Data ScoreQuestions Start}
@@ -73,12 +64,9 @@ in
     in
       if Data == nil then nil
       else
-        NextQ = {NextQuestion Data}
-      in
-        if NextQ == nil then
-          {Map Data fun {$ E} E.1 end}
-        else
-          {Split Data NextQ}
+        case {NextQuestion Data}
+          of nil then {Map Data fun {$ E} E.1 end} % keep only persons list or nil (if none)
+          [] NextQ then {Split Data NextQ}
         end
       end
     end
@@ -89,25 +77,22 @@ in
           of nil then {ProjectLib.surrender}
           [] question(Q true:T false:F unknown:U) then
             case {ProjectLib.askQuestion Q}
-              of oops then {Next Last Last}
-              [] true then {Next T Tree}
-              [] false then {Next F Tree}
-              [] unknown then {Next U Tree}
+              of oops then
+                case Last of H|T then {Next H T} else {Next Last Last} end
+              [] true then {Next T Tree|Last}
+              [] false then {Next F Tree|Last}
+              [] unknown then {Next U Tree|Last}
             end
           [] List then {ProjectLib.found List}
         end
       end
-      Result = {Next Tree Tree}
     in
       % {Browse Tree}
-
-      if Result == false then
-        {Print 'Mistakes were made...\n'}
-        {Print {ProjectLib.surrender}}
-      elseif {IsList Result} then
-        {FPrint {List.foldL Result.2 fun {$ A B} A#","#B end Result.1}}
-      else
-        {FPrint Result}
+      
+      case {Next Tree Tree}
+        of false then {Print {ProjectLib.surrender}}
+        [] H|T then {FPrint {List.foldL T fun {$ A B} A#","#B end H}}
+        [] Result then {FPrint Result}
       end
       
       if NoGUI == false then {FPrint '\n'} end
@@ -115,8 +100,8 @@ in
       unit % always return unit
     end
   in
-    {ProjectLib.play opts(characters:ListOfCharacters driver:GameDriver 
-                          noGUI:NoGUI builder:TreeBuilder autoPlay:ListOfAnswers
+    {ProjectLib.play opts(characters:ListOfCharacters autoPlay:ListOfAnswers
+                          noGUI:NoGUI builder:TreeBuilder driver:GameDriver
                           oopsButton:true allowUnknown:true)}
     {File close}
     {Application.exit 0}
