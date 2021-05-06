@@ -20,78 +20,59 @@ in
     % get next best question to ask to split possible anwers equally
     fun {NextQuestion Data}
       % returns score(q1:0 q2:0 ... qn:0) (each question starts with a 0 score)
-      Start = {List.toRecord score {List.map {Arity Data.1}.2 fun {$ E} E#0 end}}
+      Start = {List.toRecord score {Map {Arity Data.1}.2 fun {$ E} E#0 end}}
 
       % returns a record with the score set for each question like score(q1:2 q2:5 q3:1)
-      fun {ScoreQuestions Acc Elem}
-        {Record.mapInd Acc fun {$ Q E} if Elem.Q then E+1 else E end end}
+      fun {ScoreQuestions Acc Per}
+        {Record.mapInd Acc fun {$ Q S} if Per.Q then S+1 else S-1 end end}
       end
 
       % returns the question with the best score
-      fun {GetBestScoredQ Scores Persons}
-        Ideal = Persons div 2
-        fun {Dist A} {Abs Ideal - A} end
-        fun {IsBetterThan Q Acc B}
-          if {Dist Acc.2} > {Dist B} then Q#B else Acc end
+      fun {GetBestScoredQ Scores}
+        fun {Best Q Acc X}
+          if Acc.2 > {Abs X} then Q#{Abs X} else Acc end
         end
       in
-        {Record.foldLInd Scores IsBetterThan nil#Persons+1}.1 % Acc = Question#Score
+        {Record.foldLInd Scores Best nil#{Length Data}}.1 % Acc = Question#Score
       end
 
       Scores = {FoldL Data ScoreQuestions Start}
-
-      % true if all players left have the same answers (then you shouldn't ask the questions)
-      AllEqual = {Record.all Scores fun {$ E} E == {Length Data} orelse E == 0 end}
     in
-      if {Length Data} =< 1 orelse {Width Data.1} =< 1 orelse AllEqual then nil
-      else {GetBestScoredQ Scores {Length Data}}
-      end
+      if {Length Data} =< 1 then nil else {GetBestScoredQ Scores} end
     end
 
     fun {TreeBuilder Data}
-      % splits a list in true and false for the question (with the question removed)
-      fun {Split Data Question}
-        T F Ask RemoveQ
-      in
-        Ask = fun {$ E} E.Question end
-        {List.partition Data Ask T F} % split true (in T) and false (in F) results to Ask
-        RemoveQ = fun {$ E} {Record.subtract E Question} end % remove question from db records
-        question(Question
-                true:{TreeBuilder {Map T RemoveQ}}
-                false:{TreeBuilder {Map F RemoveQ}}
-                unknown:{TreeBuilder {Map Data RemoveQ}})
-      end
-    in
-      if Data == nil then nil
-      else
-        case {NextQuestion Data}
-          of nil then {Map Data fun {$ E} E.1 end} % keep only persons list or nil (if none)
-          [] NextQ then {Split Data NextQ}
-        end
+      case {NextQuestion Data}
+        of nil then {Map Data fun {$ E} E.1 end} % keep only persons list or nil (if none)
+        [] NextQ then T F ClearQ in
+          fun {ClearQ P} {Record.subtract P NextQ} end % remove question from db records
+          {List.partition Data fun {$ E} E.NextQ end T F} % split in T and F (answer to NextQ)
+          question(NextQ
+                  true:{TreeBuilder {Map T ClearQ}}
+                  false:{TreeBuilder {Map F ClearQ}}
+                  unknown:z)%{TreeBuilder {Map Data ClearQ}})
       end
     end
 
     fun {GameDriver Tree}
-      fun {Next Tree Last}
+      fun {Ask Tree Last} % Last is a list of previous Trees
         case Tree
           of nil then {ProjectLib.surrender}
           [] question(Q true:T false:F unknown:U) then
             case {ProjectLib.askQuestion Q}
               of oops then
-                case Last of H|T then {Next H T} else {Next Last Last} end
-              [] true then {Next T Tree|Last}
-              [] false then {Next F Tree|Last}
-              [] unknown then {Next U Tree|Last}
+                case Last of H|T then {Ask H T} else {Ask Tree Tree} end
+              [] true then {Ask T Tree|Last}
+              [] false then {Ask F Tree|Last}
+              [] unknown then {Ask U Tree|Last}
             end
           [] List then {ProjectLib.found List}
         end
       end
     in
-      % {Browse Tree}
-      
-      case {Next Tree Tree}
+      case {Ask Tree nil}
         of false then {Print {ProjectLib.surrender}}
-        [] H|T then {FPrint {List.foldL T fun {$ A B} A#","#B end H}}
+        [] H|T then {FPrint {FoldL T fun {$ A B} A#","#B end H}}
         [] Result then {FPrint Result}
       end
       
