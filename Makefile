@@ -24,7 +24,7 @@ ext: all
 	@$(OZC) $(OZFLAGS) -c $< -o $@
 
 ingi: Main.oz Rapport.pdf
-	@zip Projet Main.oz Rapport.pdf
+	@zip Projet Main.oz Extensions.oz Rapport.pdf
 
 %.pdf:
 	@echo "Pas encore fait..." > $@

@@ -1,6 +1,0 @@
-character('Rone'
-'Est-ce que c\'est une fille ?':false
-'A-t-il des cheveux noirs ?':false
-'Porte-t-il des lunettes ?':false
-'A-t-il des cheveux roux ?':true
-)
