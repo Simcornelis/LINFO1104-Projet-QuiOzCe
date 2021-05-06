@@ -49,21 +49,28 @@ in
           {List.partition Data fun {$ E} E.NextQ end T F} % split in T and F (answer to NextQ)
           question(NextQ
                    true:{TreeBuilder {Map T ClearQ}}
-                   false:{TreeBuilder {Map F ClearQ}})
+                   false:{TreeBuilder {Map F ClearQ}}
+                   unknown:{TreeBuilder {Map Data ClearQ}})
       end
     end
 
     fun {GameDriver Tree}
-      fun {Ask Tree}
+      fun {Ask Tree Last} % Last is a list of previous Trees
         case Tree
           of nil then {ProjectLib.surrender}
-          [] question(Q true:T false:F) then
-            if {ProjectLib.askQuestion Q} then {Ask T} else {Ask F} end
+          [] question(Q true:T false:F unknown:U) then
+            case {ProjectLib.askQuestion Q}
+              of oops then
+                case Last of H|T then {Ask H T} else {Ask Tree Tree} end
+              [] true then {Ask T Tree|Last}
+              [] false then {Ask F Tree|Last}
+              [] unknown then {Ask U Tree|Last}
+            end
           [] List then {ProjectLib.found List}
         end
       end
     in
-      case {Ask Tree}
+      case {Ask Tree nil}
         of false then {Print {ProjectLib.surrender}}
         [] H|T then {FPrint {FoldL T fun {$ A B} A#","#B end H}}
         [] Result then {FPrint Result}
@@ -75,7 +82,8 @@ in
     end
   in
     {ProjectLib.play opts(characters:ListOfCharacters autoPlay:ListOfAnswers
-                          noGUI:NoGUI builder:TreeBuilder driver:GameDriver)}
+                          noGUI:NoGUI builder:TreeBuilder driver:GameDriver
+                          oopsButton:true allowUnknown:true)}
     {File close}
     {Application.exit 0}
   end

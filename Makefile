@@ -15,6 +15,10 @@ run: all
 	@echo RUN Main.ozf
 	@$(OZENGINE) Main.ozf --db $(DBPATH) $(NOGUI)
 
+ext: all
+	@echo RUN Extensions.ozf
+	@$(OZENGINE) Extensions.ozf --db $(DBPATH) $(NOGUI)
+
 %.ozf: %.oz
 	@echo OZC $@
 	@$(OZC) $(OZFLAGS) -c $< -o $@
